@@ -1,0 +1,97 @@
+name: kevdemo2
+version: 1.0.0+1
+publish_to: none
+description: Houses app.
+environment: 
+  sdk: '>=3.1.0 <4.0.0'
+dependencies: 
+  animated_widgets: ^1.1.0
+  bloc_test: ^9.1.4
+  carousel_slider: ^4.0.0
+  collection: ^1.17.0
+  cupertino_icons: ^1.0.3
+  dio: ^5.3.3
+  enum_to_string: ^2.0.1
+  equatable: ^2.0.5
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^8.0.0
+  flutter_cache_manager: ^3.1.1
+  flutter_localizations:
+    sdk: flutter
+  flutter_secure_storage: ^8.0.0
+  flutter_spinkit: ^5.1.0
+  flutter_svg: ^2.0.7
+  geolocator: ^10.1.0
+  get_it: ^7.6.4
+  go_router: ^11.1.2
+  google_fonts: ^4.0.3
+  google_maps_flutter: ^2.5.0
+  hive_flutter: ^1.1.0
+  internet_connection_checker: ^1.0.0+1
+  intl: ^0.18.1
+  json_annotation: ^4.4.0
+  logging: ^1.2.0
+  maps_launcher: ^2.2.0
+  mocktail: ^1.0.0
+  package_info: ^2.0.2
+  package_info_plus: ^4.0.2
+  provider: ^6.0.0
+  pubspec_dependency_sorter: ^1.0.4
+  searchable_listview: ^2.7.1
+  sizer: ^2.0.15
+  sqflite: ^2.0.0+4
+  string_validator: ^1.0.0
+  url_launcher: ^6.1.14
+  uuid: ^3.0.5
+  very_good_analysis: ^5.1.0
+dev_dependencies:
+  build_runner: ^2.1.7
+  flutter_launcher_icons: ^0.13.1
+  flutter_lints: ^2.0.1
+  flutter_test:
+    sdk: flutter
+  json_serializable: ^6.6.0
+  mockito: ^5.0.16
+  test: ^1.16.0
+flutter:
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/
+    - assets/0.75x/
+    - assets/1.0x/
+    - assets/1.5x/
+    - assets/2.0x/
+    - assets/3.0x/
+    - assets/4.0x/
+    - assets/icons/
+  fonts: 
+    - 
+      family: GothamSSm
+      fonts: 
+        - 
+          asset: fonts/gothamSSm/GothamSSm-Black.otf
+        - 
+          asset: fonts/gothamSSm/GothamSSm-BlackItalic.otf
+        - 
+          asset: fonts/gothamSSm/GothamSSm-Bold.otf
+        - 
+          asset: fonts/gothamSSm/GothamSSm-BoldItalic.otf
+        - 
+          asset: fonts/gothamSSm/GothamSSm-Book.otf
+        - 
+          asset: fonts/gothamSSm/GothamSSm-BookItalic.otf
+        - 
+          asset: fonts/gothamSSm/GothamSSm-Light.otf
+        - 
+          asset: fonts/gothamSSm/GothamSSm-LightItalic.otf
+        - 
+          asset: fonts/gothamSSm/GothamSSm-Medium.otf
+        - 
+          asset: fonts/gothamSSm/GothamSSm-MediumItalic.otf
+        - 
+          asset: fonts/gothamSSm/GothamSSm-Xlight.otf
+        - 
+          asset: fonts/gothamSSm/GothamSSm-XlightItalic.otf
+  uses-material-design: true

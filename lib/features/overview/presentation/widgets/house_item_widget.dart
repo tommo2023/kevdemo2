@@ -46,7 +46,6 @@ class HouseItemWidget extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // SizedBox(height: 2.h),
               Padding(
                 padding: EdgeInsets.all(3.w),
                 child: Row(
@@ -72,7 +71,6 @@ class HouseItemWidget extends StatelessWidget {
                     Expanded(
                       flex: 75,
                       child: SizedBox(
-                        // color: Colors.blue,
                         width: 50.w,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,

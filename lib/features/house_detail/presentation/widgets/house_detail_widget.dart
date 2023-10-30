@@ -144,8 +144,6 @@ class HouseDetailWidget extends StatelessWidget {
             ),
           ),
         ),
-        // Text(house.price.toString()),
-        // Text(house.description),
       ],
     );
   }

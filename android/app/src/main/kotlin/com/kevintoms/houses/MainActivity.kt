@@ -1,4 +1,4 @@
-package com.kevintoms.houses.kevdemo2
+package com.kevintoms.houses
 
 import io.flutter.embedding.android.FlutterActivity
 

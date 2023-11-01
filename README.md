@@ -15,10 +15,12 @@
 - Uses Mocktail for unit testing
 - Uses Mocktail for bloc testing
 
+## Google Maps key not included
+- You will need to add your own Google Maps key to the AndroidManifest.xml and Appdelegate.swift files
 
 ## TODO    
-WIP to add Firebase Auth and Firebase Firestore
-WIP adapt to more platforms
+- WIP to add Firebase Auth and Firebase Firestore
+- WIP adapt to more platforms
 
 
 

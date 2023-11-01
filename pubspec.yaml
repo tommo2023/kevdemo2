@@ -15,6 +15,8 @@ dependencies:
   equatable: ^2.0.5
   firebase_auth: ^4.12.1
   firebase_core: ^2.20.0
+  firebase_dynamic_links: ^5.4.3
+  firebase_ui_auth: ^1.9.1
   flutter:
     sdk: flutter
   flutter_bloc: ^8.0.0
@@ -69,12 +71,11 @@ flutter:
     - assets/4.0x/
     - assets/icons/
   fonts: 
-    - 
-      family: GothamSSm
-      fonts: 
-        - 
+    - family: GothamSSm
+      fonts:
+        -
           asset: fonts/gothamSSm/GothamSSm-Black.otf
-        - 
+        -
           asset: fonts/gothamSSm/GothamSSm-BlackItalic.otf
         - 
           asset: fonts/gothamSSm/GothamSSm-Bold.otf
@@ -96,4 +97,7 @@ flutter:
           asset: fonts/gothamSSm/GothamSSm-Xlight.otf
         - 
           asset: fonts/gothamSSm/GothamSSm-XlightItalic.otf
-  uses-material-design: true
+    - family: SocialIcons
+      fonts:
+        - asset: packages/firebase_ui_auth/fonts/SocialIcons.ttf
+uses-material-design: true

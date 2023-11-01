@@ -1,14 +1,16 @@
 // ignore_for_file: public_member_api_docs
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:kevdemo2/authorization.dart';
 import 'package:kevdemo2/features/house_detail/presentation/bloc/house_bloc.dart';
 import 'package:kevdemo2/features/information/presentation/views/information_page.dart';
 import 'package:kevdemo2/features/overview/presentation/bloc/houses_bloc.dart';
 import 'package:kevdemo2/features/overview/presentation/views/overview_page.dart';
 import 'package:kevdemo2/firebase_options.dart';
-import 'package:kevdemo2/routes/routes.dart';
+import 'package:kevdemo2/logging.dart';
 import 'package:kevdemo2/service_locator.dart';
 import 'package:kevdemo2/shared/custom_colors.dart';
 import 'package:sizer/sizer.dart';
@@ -18,8 +20,14 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  setUpLocator();
+  FirebaseUIAuth.configureProviders([
+    EmailAuthProvider(),
+    // ... other providers
+  ]);
 
+  setUpAuthorization();
+  setUpLocator();
+  setUpLogging();
   runApp(const MyApp());
 }
 
@@ -39,15 +47,27 @@ class MyApp extends StatelessWidget {
       ],
       child: Sizer(
         builder: (context, orientation, deviceType) {
-          return MaterialApp.router(
-            routerConfig: goRouter,
-            title: 'Houses',
-            theme: ThemeData(
-              fontFamily: 'GothamSsm',
-              colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-              useMaterial3: true,
-            ),
+          return SignInScreen(
+            actions: [
+              AuthStateChangeAction<SignedIn>((context, state) {
+                if (!state.user!.isEmailVerified) {
+                  Navigator.pushNamed(context, '/verify-email');
+                } else {
+                  Navigator.pushReplacementNamed(context, '/profile');
+                }
+              }),
+            ],
           );
+
+          //   MaterialApp.router(
+          //   routerConfig: goRouter,
+          //   title: 'Houses',
+          //   theme: ThemeData(
+          //     fontFamily: 'GothamSsm',
+          //     colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          //     useMaterial3: true,
+          //   ),
+          // );
         },
       ),
     );

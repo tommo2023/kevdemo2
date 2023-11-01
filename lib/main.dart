@@ -7,12 +7,11 @@ import 'package:kevdemo2/features/house_detail/presentation/bloc/house_bloc.dart
 import 'package:kevdemo2/features/information/presentation/views/information_page.dart';
 import 'package:kevdemo2/features/overview/presentation/bloc/houses_bloc.dart';
 import 'package:kevdemo2/features/overview/presentation/views/overview_page.dart';
+import 'package:kevdemo2/firebase_options.dart';
 import 'package:kevdemo2/routes/routes.dart';
 import 'package:kevdemo2/service_locator.dart';
 import 'package:kevdemo2/shared/custom_colors.dart';
 import 'package:sizer/sizer.dart';
-
-import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

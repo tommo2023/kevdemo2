@@ -13,6 +13,7 @@ dependencies:
   dio: ^5.3.3
   enum_to_string: ^2.0.1
   equatable: ^2.0.5
+  firebase_auth: ^4.12.1
   firebase_core: ^2.20.0
   flutter:
     sdk: flutter

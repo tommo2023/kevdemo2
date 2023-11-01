@@ -47,6 +47,7 @@ class HouseItemAttributesWidget extends StatelessWidget {
     }
 
     return Row(
+      mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         SvgPicture.asset(
@@ -119,12 +120,14 @@ class HouseItemAttributesWidget extends StatelessWidget {
         SizedBox(
           width: 1.w,
         ),
-        Text(
-          distanceString,
-          style: Theme.of(context)
-              .textTheme
-              .subtitle
-              .withColor(CustomColors.medium),
+        Flexible(
+          child: Text(
+            distanceString,
+            style: Theme.of(context)
+                .textTheme
+                .subtitle
+                .withColor(CustomColors.medium),
+          ),
         ),
       ],
     );

@@ -104,11 +104,15 @@ class HousesApi {
         final house = House.fromJson(houseData);
         housesList.add(house);
       }
+
       return housesList
           .where(
             (item) =>
-                item.city.toLowerCase().contains(filterText.toLowerCase()) ||
-                item.zip.toLowerCase().contains(filterText.toLowerCase()),
+                item.city.toUpperCase().contains(filterText.toUpperCase()) ||
+                item.zip
+                    .toUpperCase()
+                    .replaceAll(' ', '')
+                    .contains(filterText.toUpperCase().replaceAll(' ', '')),
           )
           .toList();
     } catch (e) {

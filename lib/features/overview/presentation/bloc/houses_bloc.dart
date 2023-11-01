@@ -29,7 +29,7 @@ class HousesBloc extends Bloc<HousesEvent, HousesState> {
         houses.sort(
           (a, b) => a.price.compareTo(b.price),
         );
-        emit(HousesLoaded(houses: houses));
+        emit(HousesLoaded(houses: houses, searchString: ''));
       } catch (e) {
         logger.warning(
           'on<HousesRequestedEvent>:HouseError '
@@ -47,8 +47,17 @@ class HousesBloc extends Bloc<HousesEvent, HousesState> {
       emit(HousesLoading());
       try {
         final houses = await getHousesFiltered(event.filterText);
+        if (houses.isEmpty) {
+          emit(
+            HousesNotFound(
+              houses: const <House>[],
+              searchString: event.filterText,
+            ),
+          );
+          return;
+        }
         houses.sort((a, b) => a.price.compareTo(b.price));
-        emit(HousesLoaded(houses: houses));
+        emit(HousesLoaded(houses: houses, searchString: event.filterText));
       } catch (e) {
         logger.warning(
           'on<HousesFilteredRequestedEvent>:HouseError '

@@ -16,11 +16,15 @@ class SearchableListViewWidget extends StatefulWidget {
   /// Creates a [SearchableListViewWidget] instance with the provided [houses].
   const SearchableListViewWidget({
     required this.houses,
+    required this.searchString,
     super.key,
   });
 
   /// The list of [House] objects to display and search within.
   final List<House> houses;
+
+  /// The search string used to filter the list of [House] objects.
+  final String searchString;
 
   @override
   State<SearchableListViewWidget> createState() =>
@@ -29,7 +33,7 @@ class SearchableListViewWidget extends StatefulWidget {
 
 class _SearchableListViewWidgetState extends State<SearchableListViewWidget> {
   late TextEditingController _searchController;
-  String enteredText = '';
+  String _enteredText = '';
   bool _isCalculateDistance = false;
 
   @override
@@ -42,7 +46,27 @@ class _SearchableListViewWidgetState extends State<SearchableListViewWidget> {
 
   void handleTextChange(String value) {
     setState(() {
-      enteredText = value;
+      _enteredText = value;
+    });
+  }
+
+  void clearSearch() {
+    setState(() {
+      _searchController.clear();
+      _enteredText = '';
+      context.read<HousesBloc>().add(
+            HousesRequestedEvent(),
+          );
+    });
+  }
+
+  void doSearch(String searchText) {
+    setState(() {
+      context.read<HousesBloc>().add(
+            HousesFilteredRequestedEvent(
+              filterText: searchText,
+            ),
+          );
     });
   }
 
@@ -66,27 +90,38 @@ class _SearchableListViewWidgetState extends State<SearchableListViewWidget> {
                 borderRadius: BorderRadius.circular(10.0.sp),
               ),
               child: TextField(
+                onSubmitted: doSearch,
+                textAlign: TextAlign.left,
                 textAlignVertical: TextAlignVertical.center,
-                style: Theme.of(context).textTheme.hint,
                 controller: _searchController,
                 onChanged: handleTextChange,
                 decoration: InputDecoration(
+                  hintText: widget.houses.isNotEmpty
+                      ? 'Search for a home'
+                      : widget.searchString,
+                  hintStyle: Theme.of(context)
+                      .textTheme
+                      .hint
+                      .withColor(CustomColors.medium),
                   fillColor: CustomColors.lightGray,
-                  suffixIcon: IconButton(
-                    icon: SvgPicture.asset(
-                      'assets/icons/ic_search.svg',
-                    ),
-                    onPressed: () {
-                      context.read<HousesBloc>().add(
-                            HousesFilteredRequestedEvent(
-                              filterText: enteredText,
-                            ),
-                          );
-                    },
+                  suffixIcon: _enteredText.isNotEmpty
+                      ? IconButton(
+                          icon: SvgPicture.asset(
+                            'assets/icons/ic_close.svg',
+                          ),
+                          onPressed: clearSearch,
+                        )
+                      : IconButton(
+                          icon: SvgPicture.asset(
+                            'assets/icons/ic_search.svg',
+                          ),
+                          onPressed: () => doSearch(_enteredText),
+                        ),
+                  contentPadding: const EdgeInsets.symmetric(
+                    vertical: 9,
+                    horizontal: 20,
                   ),
                   border: InputBorder.none,
-                  hintText: '  Search for a home',
-                  contentPadding: EdgeInsets.symmetric(horizontal: 5.w),
                 ),
               ),
             ),

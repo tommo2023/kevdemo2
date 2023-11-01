@@ -56,7 +56,15 @@ class _OverviewPageState extends State<OverviewPage> {
                 if (state is HousesLoading) {
                   return const CircularProgressIndicator();
                 } else if (state is HousesLoaded) {
-                  return SearchableListViewWidget(houses: state.houses);
+                  return SearchableListViewWidget(
+                    houses: state.houses,
+                    searchString: state.searchString,
+                  );
+                } else if (state is HousesNotFound) {
+                  return SearchableListViewWidget(
+                    houses: state.houses,
+                    searchString: state.searchString,
+                  );
                 } else if (state is HousesError) {
                   return Center(
                     child: Column(

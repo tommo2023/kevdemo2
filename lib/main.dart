@@ -1,5 +1,5 @@
 // ignore_for_file: public_member_api_docs
-
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -12,8 +12,13 @@ import 'package:kevdemo2/service_locator.dart';
 import 'package:kevdemo2/shared/custom_colors.dart';
 import 'package:sizer/sizer.dart';
 
+import 'firebase_options.dart';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   setUpLocator();
 
   runApp(const MyApp());
@@ -81,6 +86,10 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       body: _pages[_selectedIndex], // Display the selected page
       bottomNavigationBar: BottomNavigationBar(
+        selectedFontSize: 0,
+        unselectedFontSize: 0,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: SvgPicture.asset(

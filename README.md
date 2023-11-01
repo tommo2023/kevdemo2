@@ -3,6 +3,8 @@
 A demo Flutter project.
 Runs on Android, iOS  
 A sample of a real estate app
+Uses geolocation for user and integrates Google Maps
+Links out to a website  
 Created with a clean architecture structure
 State management with Flutter Bloc
 Uses a Repository pattern to abstract the data layer
@@ -12,6 +14,7 @@ Uses a Singleton pattern to abstract the creation of objects
 Fixtures created to mimic a real API
 Uses Mocktail for unit testing
 Uses Mocktail for bloc testing
+
 
 TODO-    
 WIP to add Firebase Auth and Firebase Firestore

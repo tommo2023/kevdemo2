@@ -6,16 +6,21 @@ import 'package:kevdemo2/main.dart';
 
 /// GoRouter configuration
 final goRouter = GoRouter(
-  initialLocation: '/splash',
+  initialLocation: '/auth_gate',
   routes: [
     GoRoute(
       path: '/splash',
       builder: (context, state) => const SplashScreen(),
     ),
     GoRoute(
-      path: '/splash',
-      builder: (context, state) => const SignInScreen(providers: providers),
+      path: '/auth_gate',
+      builder: (context, state) => const SignInScreen(providers: []),
     ),
+    // TODO(kevin): Clean up unused routes
+    // GoRoute(
+    //   path: '/sign_in',
+    //   builder: (context, state) => const SignInScreen(providers: []),
+    // ),
     GoRoute(
       path: '/overview',
       builder: (context, state) => const MyHomePage(),

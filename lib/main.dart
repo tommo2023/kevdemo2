@@ -22,10 +22,19 @@ Future<void> main() async {
   );
   FirebaseUIAuth.configureProviders([
     EmailAuthProvider(),
-    // ... other providers
+    //   emailLinkProviderConfig,
+    //   PhoneAuthProvider(),
+    //   GoogleProvider(clientId: GOOGLE_CLIENT_ID),
+    //   AppleProvider(),
+    //   FacebookProvider(clientId: FACEBOOK_CLIENT_ID),
+    //   TwitterProvider(
+    //     apiKey: TWITTER_API_KEY,
+    //     apiSecretKey: TWITTER_API_SECRET_KEY,
+    //     redirectUri: TWITTER_REDIRECT_URI,
+    //   ),
   ]);
 
-  // setUpAuthorization();
+  // setUpAuthorizationMonitor();
   setUpLocator();
   setUpLogging();
   runApp(const MyApp());

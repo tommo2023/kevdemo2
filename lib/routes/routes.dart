@@ -1,8 +1,8 @@
-import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kevdemo2/features/house_detail/presentation/views/house_detail_page.dart';
 import 'package:kevdemo2/features/shared/views/splash_screen.dart';
 import 'package:kevdemo2/main.dart';
+import 'package:kevdemo2/shared/authorization/auth_gate.dart';
 
 /// GoRouter configuration
 final goRouter = GoRouter(
@@ -14,7 +14,7 @@ final goRouter = GoRouter(
     ),
     GoRoute(
       path: '/auth_gate',
-      builder: (context, state) => const SignInScreen(providers: []),
+      builder: (context, state) => const AuthGate(),
     ),
     // TODO(kevin): Clean up unused routes
     // GoRoute(

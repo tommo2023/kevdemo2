@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 /// Sets up authorization using Firebase Authentication and listens to changes
 /// in the user's authentication state.
-void setUpAuthorization() {
+void setUpAuthorizationMonitor() {
   /// Listen to changes in the user's authentication state
   /// using `authStateChanges()`.
   FirebaseAuth.instance.authStateChanges().listen((User? user) {
